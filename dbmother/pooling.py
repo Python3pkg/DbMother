@@ -2,7 +2,7 @@
 # Thanks to: http://wubook.net/ http://en.wubook.net/
 # License: BSD license. See `LICENSE` file at the root
 #          of python module
-from Queue import Queue
+from queue import Queue
 from threading import Lock
 from random import randint
 import logging

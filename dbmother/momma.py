@@ -11,7 +11,7 @@ class MommaSql:
   def _equalKeys(self, d, skipid= 1):
     sl= []
     af= self.argFrmt
-    for k, v in d.iteritems():
+    for k, v in d.items():
       if k == 'id' and skipid: continue
       sl.append('%s= %s' % (str(k), af % k))
     return sl
@@ -29,7 +29,7 @@ class MommaSql:
     sls= []
     sld= []
     af= self.argFrmt
-    for k, v in d.iteritems():
+    for k, v in d.items():
       if k == 'id': continue
       sls.append(k)
       sld.append(af % k)
@@ -44,8 +44,8 @@ class MommaSql:
 class MoMap:
   def __init__(self, fmap):
     fil= open(fmap, 'rb')
-    import cPickle
-    map_dicts= cPickle.load(fil)
+    import pickle
+    map_dicts= pickle.load(fil)
     self._map_file= map_file
     self._map_fields= map_dicts['K']
     self._map_pkeys= map_dicts['P']
@@ -62,7 +62,7 @@ class MommaRoot:
     MotherPooling._dbPoolLimit= plimit
     MotherPooling._dbPoolType= ptype
     if dbtype == DB_PGRES:
-      from pgres import DbIface
+      from .pgres import DbIface
       MommaSql.argFrmt= '%%(%s)s'
     elif dbtype == DB_SQLITE:
       from sqlite import DbIface

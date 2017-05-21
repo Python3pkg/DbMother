@@ -33,7 +33,7 @@ class IMotherDb:
 
   def ov_query(self, s, filter= None):
     res= self.or_query(s, filter)
-    res= res.values()
+    res= list(res.values())
     assert len(res) == 1
     return res[0]
 
